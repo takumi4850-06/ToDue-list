@@ -23,3 +23,19 @@ npm start
 - `npm run format:check` - フォーマットチェック
 - `npm run lint` - ESLintでコードチェック
 - `npm run lint:fix` - ESLintで修正可能なエラーを自動修正
+
+## プロジェクト構成
+
+```
+ToDue-list/
+├── public/                 # 静的ファイル
+├── src/                    # ソースコード
+│   ├── components/         # コンポーネント
+│   ├── pages/              # 各ページ
+│   ├── styles/             # スタイルシート
+│   ├── hooks/              # カスタムフック
+│   ├── App.js              # ルーティング設定
+│   └── index.js            # エントリーポイント
+├── package.json            # プロジェクト設定と依存関係
+└── README.md               # プロジェクト説明
+```
