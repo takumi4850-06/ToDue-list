@@ -1,0 +1,23 @@
+/* ヘッダーの高さを定義 */
+:root {
+  --header-height: 7rem;
+}
+
+/* ヘッダーの固定表示による画面ずれを防ぐ */
+body {
+  margin-top: var(--header-height);
+}
+
+.header {
+  background-color: #a9a9a9;
+  color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+}
