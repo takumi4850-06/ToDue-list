@@ -1,11 +1,9 @@
 import '../styles/Header.css';
 
-const Header = () => {
+export default function Header() {
   return (
     <header className="header">
       <h1>ToDue List</h1>
     </header>
   );
-};
-
-export default Header;
+}
