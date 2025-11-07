@@ -1,0 +1,75 @@
+#h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #2589d0;
+    border-radius: 5px;
+    background-color: #A8B4FF;
+    color: #000000;
+    font-size: 1em;
+    position: fixed;
+    bottom: 20px;
+    right: 30px
+}
+#h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #2589d0;
+    border-radius: 5px;
+    background-color: #A8B4FF;
+    color: #000000;
+    font-size: 1em;
+    position: fixed;
+    bottom: 20px;
+    right: 650px;
+
+}
+#h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #00070c;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1em;
+    position:fixed;
+    bottom: 80;
+    right: 15px;
+}
+#h4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #00070c;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1em;
+    position:fixed;
+    bottom: 80;
+    right: 80px;
+}
+/* Home.css */
+.top-text {
+    position: fixed;
+    top: 5;
+    width: 100%;
+    text-align: center;
+    background-color: #949090;
+    padding:  15px;
+    z-index: 1000;
+}
