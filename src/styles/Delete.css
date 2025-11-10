@@ -11,7 +11,7 @@
 
 .back-button {
     position: fixed;      /* 画面に固定 */
-    bottom: 20px;         /* 下から20px */
+    bottom: 21px;         /* 下から20px */
         
     padding: 12px 24px;
     font-size: 16px;
