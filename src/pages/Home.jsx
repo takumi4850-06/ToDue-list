@@ -1,10 +1,16 @@
 import '../styles/Home.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate = useNavigate();
   const handleH1Click = () => {
     alert('編集画面が表示されたよ');
   };
 
+  const handleDeleteClick = () => {
+    navigate('/delete'); // ← 削除ページへ移動！
+  };
+  
   return (
     <div>
       <div className="top-text">締め切りが近い課題</div>
@@ -27,7 +33,7 @@ export default function Home() {
           <button id="h3" type="button" onClick={handleH1Click}>
             ✏️
           </button>
-          <button id="h4" type="button" onClick={handleH1Click}>
+          <button id="h4" type="button" onClick={handleDeleteClick}>
             🗑️
           </button>
         </div>
