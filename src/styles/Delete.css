@@ -1,0 +1,25 @@
+
+/* 「完了したリスト」を中央上部に大きく配置 */
+.top {
+  text-align: center;       /* 中央寄せ */
+  font-size: 36px;          /* 大きく表示 */
+  font-weight: bold;        /* 太字 */
+  margin-top: 40px;         /* 上に少し余白 */
+  color: #333;              /* 文字色（好みで変更） */
+    background-color: #949090;
+}
+
+.back-button {
+    position: fixed;      /* 画面に固定 */
+    bottom: 21px;         /* 下から20px */
+        
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #A8B4FF;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
