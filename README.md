@@ -2,7 +2,7 @@
 
 ## 開発環境
 
-### 開発サーバーの起動手順
+### セットアップ手順
 
 （初回/表示された場合のみ）
 VSCodeの右下に表示される「推奨拡張機能をインストールしますか？」で「はい」を選択
@@ -12,7 +12,16 @@ VSCodeの右下に表示される「推奨拡張機能をインストールし�
 npm install
 ```
 
-2. 開発サーバーを起動
+2. 環境変数を設定
+
+プロジェクトルートに `.env` ファイルを作成し、Supabaseの設定を追加：
+
+```env
+REACT_APP_SUPABASE_URL=your_supabase_project_url
+REACT_APP_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+3. 開発サーバーを起動
 ```bash
 npm start
 ```
@@ -28,14 +37,15 @@ npm start
 
 ```
 ToDue-list/
-├── public/                 # 静的ファイル
-├── src/                    # ソースコード
-│   ├── components/         # コンポーネント
-│   ├── pages/              # 各ページ
-│   ├── styles/             # スタイルシート
-│   ├── hooks/              # カスタムフック
-│   ├── App.js              # ルーティング設定
-│   └── index.js            # エントリーポイント
-├── package.json            # プロジェクト設定と依存関係
-└── README.md               # プロジェクト説明
+├── public/
+├── src/
+│   ├── components/
+│   ├── contexts/
+│   ├── lib/
+│   ├── pages/
+│   ├── styles/
+│   ├── App.js
+│   └── index.js
+├── package.json
+└── README.md
 ```

@@ -1,102 +1,147 @@
-import React, { useState } from 'react';
-// CSSの参照先を新しいファイル名に変更します
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import './Signup.css';
 
 export default function Signup() {
-  // 1. 状態の定義: メールアドレス、パスワード、パスワード確認用
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); // ✨ パスワード確認用を追加
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const { signUp, user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
+
+  // 既にログインしている場合はホームにリダイレクト
+  useEffect(() => {
+    if (!authLoading && user) {
+      navigate('/');
+    }
+  }, [user, authLoading, navigate]);
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
+    setError('');
   };
 
   const handlePasswordChange = e => {
     setPassword(e.target.value);
+    setError('');
   };
 
-  // ✨ パスワード確認用入力の変更ハンドラを追加
   const handleConfirmPasswordChange = e => {
     setConfirmPassword(e.target.value);
+    setError('');
   };
 
-  // 2. ボタンクリック時の処理を新規登録用に変更
-  const handleRegister = () => {
-    // ✨ 関数名を変更: handleLogin -> handleRegister
-    console.log('新規登録ボタンが押されました！');
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+  const handleRegister = async e => {
+    e.preventDefault();
+    setError('');
+    setSuccess(false);
+    setLoading(true);
 
-    // 💡 簡易的なパスワード一致チェック
-    if (password !== confirmPassword) {
-      console.error('エラー: パスワードが一致しません！');
-      alert('パスワードと確認用パスワードが一致しません。');
+    // バリデーション
+    if (!email || !password || !confirmPassword) {
+      setError('すべての項目を入力してください。');
+      setLoading(false);
       return;
     }
 
-    // 実際にはここで新規登録APIを呼び出す処理が入ります
+    if (password !== confirmPassword) {
+      setError('パスワードと確認用パスワードが一致しません。');
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('パスワードは6文字以上で入力してください。');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const { error } = await signUp(email, password);
+      if (error) {
+        setError(error.message || '新規登録に失敗しました。');
+      } else {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      }
+    } catch (err) {
+      setError('予期しないエラーが発生しました。');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // 3. リンククリック時の処理をログイン画面への誘導に変更
   const handleLoginClick = e => {
-    // ✨ 関数名を変更: handleRegisterClick -> handleLoginClick
     e.preventDefault();
-    console.log('ログインリンクがクリックされました。');
-    // 実際にはログインページへ遷移させます
+    navigate('/login');
   };
 
   return (
     <div className="login-container">
-      {/* 画面名を変更 */}
       <h1 className="login-heading">新規登録画面</h1>
 
-      {/* 📧 メールアドレス入力欄 (変更なし) */}
-      <input
-        type="email"
-        placeholder="メールアドレスを入力"
-        value={email}
-        onChange={handleEmailChange}
-        className="email-input"
-      />
+      {error && <div className="error-message">{error}</div>}
+      {success && (
+        <div className="success-message">
+          新規登録が完了しました。ログインページに移動します...
+        </div>
+      )}
 
-      {/* 🔑 パスワード入力欄 (変更なし) */}
-      <input
-        type="password"
-        placeholder="パスワードを入力"
-        value={password}
-        onChange={handlePasswordChange}
-        className="password-input"
-      />
+      <form onSubmit={handleRegister}>
+        <input
+          type="email"
+          placeholder="メールアドレスを入力"
+          value={email}
+          onChange={handleEmailChange}
+          className="email-input"
+          disabled={loading || success}
+          required
+        />
 
-      {/* 🔑 パスワード確認用入力欄を追加 */}
-      <input
-        type="password"
-        placeholder="パスワード（確認用）を入力" // ✨ プレースホルダーを変更
-        value={confirmPassword}
-        onChange={handleConfirmPasswordChange} // ✨ 新しいハンドラを指定
-        className="password-input" // ✨ 同じスタイルを適用
-      />
+        <input
+          type="password"
+          placeholder="パスワードを入力（6文字以上）"
+          value={password}
+          onChange={handlePasswordChange}
+          className="password-input"
+          disabled={loading || success}
+          required
+          minLength={6}
+        />
 
-      {/* 🟢 ボタンのテキストと処理を変更 */}
-      <button
-        onClick={handleRegister} // ✨ 関数名を変更
-        className="login-button"
-        type="button"
-      >
-        新規登録
-      </button>
+        <input
+          type="password"
+          placeholder="パスワード（確認用）を入力"
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+          className="password-input"
+          disabled={loading || success}
+          required
+        />
 
-      {/* 🆕 リンクの内容と処理を変更 */}
+        <button
+          type="submit"
+          className="login-button"
+          disabled={loading || success}
+        >
+          {loading ? '登録中...' : '新規登録'}
+        </button>
+      </form>
+
       <p className="register-text">
-        <a
-          href="/login" // 遷移先をログインページへ
-          onClick={handleLoginClick} // ✨ 関数名を変更
+        <Link
+          to="/login"
+          onClick={handleLoginClick}
           className="register-link"
         >
           すでにアカウントをお持ちの方はこちら
-        </a>
+        </Link>
       </p>
     </div>
   );
