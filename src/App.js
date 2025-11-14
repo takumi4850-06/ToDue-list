@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Delete from './pages/Delete'; 
+import CreateTask from './pages/CreateTask';
+import EditTask from './pages/EditTask';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/delete" element={<Delete />} /> {/* ← 新しいルート */}
+            <Route path="/createtask" element={<CreateTask/>} />
+            <Route path="/edittask" element={<EditTask/>} />
           </Routes>
         </main>
       </div>

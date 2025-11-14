@@ -1,0 +1,64 @@
+.midashi{
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.name{
+    text-align: center;
+}
+.namehead{
+    margin-right: 360px;
+}
+.namebox{
+    width: 400px;
+    height: 20px;
+    font-size: 16px;
+}
+.type{
+    text-align: center;
+    margin-top: 20px;
+}
+.typehead{
+    margin-right: 360px;
+}
+.typebox{
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+}
+.date{
+    text-align: center;
+    margin-top: 20px;
+}
+.datehead{
+    margin-right: 360px;
+}
+.datebox{
+    width: 400px;
+    height: 20px;
+    font-size: 16px;
+}
+.score{
+    text-align: center;
+    margin-top: 20px;
+}
+.scorehead{
+    margin-right: 360px;
+}
+.scorebox{
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+}
+.addbutton{
+    display: block;
+    margin: 40px auto 0 auto;
+    width: 200px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #A8B4FF;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
