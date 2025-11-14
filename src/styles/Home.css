@@ -63,13 +63,34 @@
     bottom: 80;
     right: 80px;
 }
-/* Home.css */
-.top-text {
-    position: fixed;
-    top: 5;
-    width: 100%;
-    text-align: center;
-    background-color: #949090;
-    padding:  15px;
-    z-index: 1000;
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 縦に並べる */
+  gap: 10px; /* タスク間の隙間 */
 }
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.task-item {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  width: 300px;
+  text-align: center;
+}
+.top-text {
+  width: 100%;
+  background-color: #e0e0e0;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
