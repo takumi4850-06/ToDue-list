@@ -47,14 +47,15 @@ export default function Home() {
   return (
     <div>
       <div className="top-text">締め切りが近い課題</div>
-      
 
       <div className="container">
         <div className="left">
           <p></p>
         </div>
         <div className="center">
-          <button id='h2' type="button"></button>
+          <button id="h2" type="button" onClick={handleDeleteClick}>
+            完了リストへ
+          </button>
           {/* 真ん中にタスクリスト */}
           <div className="task-list">
             {dummyTasks.map(task => (
@@ -71,7 +72,7 @@ export default function Home() {
           <button id="h3" type="button" onClick={handleEditClick}>
             ✏️
           </button>
-          <button id="h4" type="button" onClick={handleDeleteClick}>
+          <button id="h4" type="button"onClick={handleDeleteClick}>
             🗑️
           </button>
         </div>
